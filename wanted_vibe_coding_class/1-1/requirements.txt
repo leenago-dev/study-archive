@@ -1,0 +1,26 @@
+# Core Dependencies
+fastapi>=0.115.0
+uvicorn[standard]>=0.30.0
+python-dotenv>=1.0.0
+
+# LangChain and LangGraph
+langgraph>=0.2.0
+langchain>=0.3.0
+langchain-community>=0.3.0
+langchain-openai>=0.2.0
+
+# Search Tools
+langchain-tavily>=0.2.0
+tavily-python>=0.5.0
+
+# HTTP and WebSocket
+websockets>=14.0
+httpx>=0.28.0
+requests>=2.32.0
+
+# Data Models
+pydantic>=2.0.0
+pydantic-settings>=2.0.0
+
+# Async Support
+aiofiles>=24.0.0
