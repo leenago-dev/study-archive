@@ -107,7 +107,7 @@ console.log(str1);
 
 // ⚠️ 오류. 왼쪽 값은 부수효과의 대상(변수)이어야 함
 const STR = '안녕~';
-STR += ' 반가워요!'; // ❌ TypeError: Assignment to constant variable.
+// STR += ' 반가워요!'; // ❌ TypeError: Assignment to constant variable.
 console.log(STR);
 
 // 다른 자료형과 연결하면 모두 문자열로 반환이 된다.
@@ -118,38 +118,38 @@ console.log(typeof result); // string
 
 
 // 4. 숫자에 사용되는 연산자
-let x = 1 / 0;
-console.log(x, typeof x); // Infinity, number
+let x4 = 1 / 0;
+console.log(x4, typeof x4); // Infinity, number
 
 // 무한대에는 양음이 있음
-console.log(-x, typeof -x); // -Infinity, number
+console.log(-x4, typeof -x4); // -Infinity, number
 
 // Infinity도 예약어!
-let z = Infinity;
-console.log(z, typeof z);
+let z4 = Infinity;
+console.log(z4, typeof z4);
 
 // 'Not a Number' 라는 숫자형 자료형이 있음!
-let x = 1 / 'abc';
-let y = 2 * '가나다';
-let z = NaN;
+let x5 = 1 / 'abc';
+let y5 = 2 * '가나다';
+let z5 = NaN;
 
-console.log(x, typeof x);
-console.log(y, typeof y);
-console.log(z, typeof z);
+console.log(x5, typeof x5);
+console.log(y5, typeof y5);
+console.log(z5, typeof z5);
 
 // NaN은 양음이 없음
 console.log(-NaN);
 
-let x = 1 / 'abc';
+let x6 = 1 / 'abc';
 
 //
 console.log(
-  x,
-  x == NaN, //  ⚠️ false - == 으로는 NaN 값 확인이 불가하다!
-  x === NaN, //  ⚠️ false - === 으로는 NaN 값 확인이 불가하다!
-  typeof x, //  ⚠️ number로 출력이 되어 NaN 값 확인이 불가하다!
-  isNaN(x), // 숫자가 아닐 시 true
-  Number.isNaN(x) // 숫자 자료형인 주제에 숫자가 아니어야만 true
+  x6,
+  x6 == NaN, //  ⚠️ false - == 으로는 NaN 값 확인이 불가하다!
+  x6 === NaN, //  ⚠️ false - === 으로는 NaN 값 확인이 불가하다!
+  typeof x6, //  ⚠️ number로 출력이 되어 NaN 값 확인이 불가하다!
+  isNaN(x6), // 숫자가 아닐 시 true
+  Number.isNaN(x6) // 숫자 자료형인 주제에 숫자가 아니어야만 true
 );
 
 // 산술 연산자
@@ -341,3 +341,146 @@ y3 &&= '있어야 바뀜'; // y3이 빈 문자열이라 false로 평가되고 an
 z3 ??= '기본값'; // z3이 null이라 false로 평가되므로, '기본값'이 나오고, 거기에 병합 할당 연산자를 사용하면 '기본값'이 할당된다.
 
 console.log(x3, y3, z3); // 100, '', '기본값'
+
+
+// 8. 객체와 배열 미리보기
+// 1) 객체 (object)
+/* JavaScript에서 원시 타입이 아닌 모든 데이터는 근본적으로 '객체' 이다.
+객체는 복합적인 정보를 프로퍼티 (key-value pair)들로 직접 저장하는 자료형이다.
+
+const objName = {
+  key1: value1,
+  key2: value2,
+  ...
+};
+// ⚠️ 블록이 아님!
+*/
+
+const person1 = {
+  name: '김철수',
+  age: 25,
+  married: false
+}; // const인데 안에 있는 값은 변경할 수 있음
+
+console.log(typeof person1); // object
+console.log(person1);
+
+// 객체의 프로퍼티 접근 방법 2가지
+// 1) 점 표기법
+console.log(person1.name, person1.age, person1.married);
+
+// 2) 대괄호 표기법
+console.log(person1['name']);
+console.log(person1['age']);
+console.log(person1['married']);
+
+// 존재하지 않는 프로퍼티에 접근하려면 'undefined'를 반환한다.
+// 존재하는 프로퍼티인지 확인하려면 'in'을 사용한다.
+console.log('name' in person1); // true
+console.log('gender' in person1); // false
+
+// 새 프로퍼티 추가
+person1.gender = 'male';
+console.log('gender' in person1); //true
+
+// 프로퍼티 내용 수정
+person1.age = 26
+console.log(person1.age);
+
+
+// 2) 배열 (array)
+const winners = [12, 592, 7, 48];
+const weekdays = ['월', '화', '수', '목', '금', '토', '일'];
+
+// 한 배열에 여러 자료형을 한 번에 넣을 수 있음
+const randoms = ['홍길동', -24, true, null, undefined];
+
+console.log(typeof winners);
+console.log(winners, weekdays, randoms);
+
+// 특정 순서의 값에 접근하는 법 (0부터 시작)
+console.log(winners[0], weekdays[6], randoms[3]);
+
+// 배열의 길이(요소의 갯수)를 얻는 법
+console.log(winners.length, weekdays.length, randoms.length); // .len()과 비슷
+
+// 마지막 요소 얻기
+console.log(winners[winners.length - 1]);
+
+const numbers = [1, 2, 3];
+
+// 특정 위치의 값 수정
+numbers[2] = 5;
+
+console.log(numbers); // [1, 2, 5]
+
+// 맨 끝에 값 추가 (push)
+numbers.push(10);
+
+console.log(numbers); // [1, 2, 5, 10]
+
+// 배열의 범주를 넘어가게 되면, undefined를 반환한다.
+const winners2 = [12, 592, 7, 48]; // 0, 1, 2, 3으로 인덱싱 되어있음 (length는 4)
+console.log(winners2[winners2.length]); // undefined
+
+// 객체 안에 객체, 배열 등등을 다 넣을 수 있음
+const person2 = {
+  name: '김달순',
+  age: 23,
+  languages: ['Korean', 'English', 'French'],
+  education: {
+    school: '한국대',
+    major: ['컴퓨터공학', '전자공학'],
+    graduated: true,
+  }
+};
+
+console.log(person2.languages[2]); // French
+console.log(person2.education.graduated); // true
+console.log(person2.education.major[1]); // 전자공학
+
+
+
+// ⭐️ 9. 원시타입 vs 참조타입 ⭐️
+/* 원시타입: 원시 자료형은 복사할 땐 같은 값을 바라보고 있다가, 한 쪽에 다른 값을 할당하면 각자 새로운 값을 바라보게 됨.
+*/
+
+let number3 = 1;
+let string3 = 'ABC';
+let bool3 = true;
+
+let number4 = number3;
+let string4 = string3;
+let bool4 = bool3;
+
+number4 = 2;
+string4 = '가나다';
+bool4 = false;
+
+console.log('~3:', number3, string3, bool3);
+console.log('~4:', number4, string4, bool4);
+
+let number1 = 1;
+number2 = number1;
+number2 = 2;
+
+console.log(number1, number2); // 1, 2
+
+/* 참조타입: 주소를 갖는 주머니에 들어있고, 복사할 때 주소의 주머니를 동일하게 복사함
+같은 주소값을 참조하고 있는 상태라서 원본도 함께 변경되는 것!
+*/
+const obj1 = {
+  num: 1, str: 'ABC', bool: true
+};
+const obj2 = obj1;
+
+console.log('obj1:', obj1); // { num: 1, str: 'ABC', bool: true }
+console.log('obj2:', obj2); // { num: 1, str: 'ABC', bool: true }
+
+// ⭐️ const임에도 내부 값은 변경 가능! 힙(heap) 영역에 있는 값을 변경하는 것이기 때문에 변경 가능
+obj2.num = 2;
+obj2.str = '가나다';
+obj2.bool = false;
+
+console.log('obj1:', obj1); // { num: 2, str: 'ABC', bool: true } ❗️ 원본도 변경됨
+console.log('obj2:', obj2); // { num: 2, str: '가나다', bool: false }
